@@ -12,10 +12,6 @@ public class Program {
 
 	public static void main(String[] args) throws SQLException {
 
-		//Product p = new Product();
-		//p.setName("Pizza de Marguerita");
-
-		//System.out.println(". Nome do Produto: " + p.getName());
 
 		Connection conn = DB.getConnection();
 
@@ -24,8 +20,16 @@ public class Program {
 		ResultSet rs = st.executeQuery("select * from tb_product");
 
 		while (rs.next()) { //percorre as linhas tb
-			System.out.println(rs.getLong("Id") + ". " + rs.getString("Name")
-					+ " | R$ " + rs.getFloat("Price"));
+
+			Product p = new Product();
+			//instanciar objetos
+			p.setId(rs.getLong("id"));
+			p.setDescription(rs.getString("description"));
+			p.setName(rs.getString("name"));
+			p.setImageUri(rs.getString("image_uri"));
+			p.setPrice(rs.getDouble("price"));
+
+			System.out.println(p);
 		}
 	}
 }
