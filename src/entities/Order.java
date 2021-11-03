@@ -12,7 +12,19 @@ public class Order {
     private Instant moment;
     private OrderStatus status; //class do tipo enumerado
 
+    //Composição com a classe produtos
     private List<Product> products = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", latitude=" + latitude +
+                ", longitude=" + longitude +
+                ", moment=" + moment +
+                ", status=" + status +
+                '}';
+    }
 
     public Long getId() {
         return id;
@@ -66,4 +78,7 @@ public class Order {
         return products;
     }
     //não tem set da List.
+
+
+
 }
