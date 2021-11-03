@@ -10,15 +10,15 @@ import java.util.Properties;
 public class DB {
 
 	private static Connection conn = null;
-	
+	//conecta como o banco
 	public static Connection getConnection() {
 		if (conn == null) {
 			try {
 				Properties props = loadProperties();
 				String url = props.getProperty("dburl");
-				conn = DriverManager.getConnection(url, props);
+				conn = DriverManager.getConnection(url, props); //*
 			}
-			catch (SQLException e) {
+			catch (SQLException e) { //*
 				throw new DbException(e.getMessage());
 			}
 		}
@@ -34,7 +34,7 @@ public class DB {
 			}
 		}
 	}
-	
+	//ler e retorna
 	private static Properties loadProperties() {
 		try (FileInputStream fs = new FileInputStream("db.properties")) {
 			Properties props = new Properties();
